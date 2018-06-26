@@ -1,5 +1,6 @@
 import colorama, random
 
+random.seed()
 colorama.init()
 
 # Command alias defenitions
@@ -18,6 +19,11 @@ alignments = (
 	("Lawful Evil", "Neutral Evil", "Chaotic Evil")
 )
 
+char_classes = (
+	"Barbarian",
+	"Fighter"
+)
+
 # List of D&D races
 races = (
 	"Human",
@@ -25,20 +31,44 @@ races = (
 	"Dwarf"
 )
 
-class Person:
-	def __init__(self, name, location, race=None, ability_scores=None, alignment=None):
+class Character:
+	def __init__(self, name, location, char_class=None, race=None, ability_scores=None, alignment=None):
 		self.name = name
 		self.location = location
 		
-		if race is None:
-			self.race = races[0]
+		if char_class is None:
+			self.char_class = CharacterClass(0, self)
 		
 		if ability_scores is None:
 			self.ability_scores = [10, 10, 10, 10, 10, 10]
+		
+		if race is None:
+			self.race = races[0]
 			
 		if alignment is None:
 			self.alignment = alignments[0][2]
 
+class CharacterClass:
+	def __init__(self, indx, parent):
+		self.name = char_classes[indx]
+		self.parent = parent
+
+# DICE DEFS BEGIN HERE
+def dX(a, b):
+	return random.randint(1, b) * a
+
+def d4(a):
+	return dX(a, 4)
+
+def d6(a):
+	return dX(a, 6)
+
+def d8(a):
+	return dX(a, 8)
+	
+def d10(a):
+	return dX(a, 10)
+	
 def print_roomdata():
 	print(colorama.Style.BRIGHT + world[player.location][0] + ":\n" + colorama.Style.RESET_ALL)
 	print(world[player.location][1])
@@ -50,7 +80,8 @@ def print_playerstats():
 	
 '''
 World format:
-(name, description, north, south, west, east)
+(name, description,
+ north, south, west, east)
 '''
 
 world = [
@@ -60,11 +91,13 @@ world = [
 	None, None, 0, None)
 ]
 
-player = Person("Bob", 0)
+player = Character("Bob", 0)
 
 cmd = ""
 
 print_roomdata()
+
+print(d4(1))
 
 while cmd not in quit_cmd:
 	cmd = input("> ")
