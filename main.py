@@ -4,13 +4,13 @@ random.seed()
 colorama.init()
 
 # Command alias defenitions
-quit_cmd = ["q", "quit"]
-look_cmd = ["l", "look"]
-east_cmd = ["e", "east"]
-west_cmd = ["w", "west"]
-north_cmd = ["n", "north"]
-south_cmd = ["s", "south"]
-char_cmd = ["c", "char"]
+quit_cmd = ("q", "quit")
+look_cmd = ("l", "look")
+east_cmd = ("e", "east")
+west_cmd = ("w", "west")
+north_cmd = ("n", "north")
+south_cmd = ("s", "south")
+char_cmd = ("c", "char")
 
 # List of D&D alignments
 alignments = (
@@ -33,8 +33,16 @@ races = (
 	"Dwarf"
 )
 
+size_categories = (
+	"Tiny",
+	"Small",
+	"Medium",
+	"Large",
+	"Huge"
+)
+
 class Character:
-	def __init__(self, name, location, char_class=None, race=None, ability_scores=None, alignment=None):
+	def __init__(self, name, location, size=None, char_class=None, race=None, ability_scores=None, alignment=None):
 		self.name = name
 		self.location = location
 		
@@ -54,6 +62,9 @@ class Character:
 			self.age = 15 + d4(1)
 		elif self.char_class.name == "Fighter":
 			self.age = 15 + d6(1)
+			
+		if size is None:
+			self.size = size_categories[2]
 
 class CharacterClass:
 	def __init__(self, indx, parent):
@@ -81,12 +92,13 @@ def print_roomdata():
 
 def print_playerstats():
 	print("Player " + player.name + ", Age " + str(player.age) + ":")
+	print("Size:", player.size)
 	print("Class:", player.char_class.name)
 	print("Race:", player.race)
 	print("Alignment:", player.alignment)
 	
 '''
-World format:
+Room format:
 (name, description,
  north, south, west, east)
 '''
