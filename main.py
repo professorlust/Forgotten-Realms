@@ -60,23 +60,17 @@ class CharacterClass:
 		self.parent = parent
 
 # DICE DEFS BEGIN HERE
-def dX(a, b):
-	return random.randint(1, b) * a
+def dX(a, b): return random.randint(1, b) * a
 
-def d4(a):
-	return dX(a, 4)
+def d4(a): return dX(a, 4)
 
-def d6(a):
-	return dX(a, 6)
+def d6(a): return dX(a, 6)
 
-def d8(a):
-	return dX(a, 8)
+def d8(a): return dX(a, 8)
 	
-def d10(a):
-	return dX(a, 10)
+def d10(a): return dX(a, 10)
 	
-def d12(a):
-	return dX(a, 12)
+def d12(a): return dX(a, 12)
 
 # DICE DEFS END HERE
 	
