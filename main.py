@@ -6,6 +6,8 @@ quit_cmd = ["q", "quit"]
 look_cmd = ["l", "look"]
 east_cmd = ["e", "east"]
 west_cmd = ["w", "west"]
+north_cmd = ["n", "north"]
+south_cmd = ["s", "south"]
 
 class Person:
 	def __init__(self, name, location):
@@ -22,8 +24,8 @@ World format:
 '''
 
 world = [
-	("Test Room", "This is a test room.", None, None, None, 1),
-	("Another Test Room", "This is a second test room.", None, None, 0, None)
+	("Test Room", "This is a test room.", None, 1, None, 1),
+	(colorama.Fore.GREEN + "Another Test Room", "This is a second test room.", 0, None, 0, None)
 ]
 
 player = Person("Bob", 0)
@@ -44,4 +46,12 @@ while cmd not in quit_cmd:
 		
 	if cmd in west_cmd and world[player.location][4] is not None:
 		player.location = world[player.location][4]
+		print_roomdata()
+	
+	if cmd in north_cmd and world[player.location][2] is not None:
+		player.location = world[player.location][2]
+		print_roomdata()
+
+	if cmd in south_cmd and world[player.location][3] is not None:
+		player.location = world[player.location][3]
 		print_roomdata()
