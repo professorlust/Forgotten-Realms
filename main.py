@@ -1,4 +1,4 @@
-import colorama
+import colorama, random
 
 colorama.init()
 
@@ -8,15 +8,43 @@ east_cmd = ["e", "east"]
 west_cmd = ["w", "west"]
 north_cmd = ["n", "north"]
 south_cmd = ["s", "south"]
+char_cmd = ["c", "char"]
+
+# List of D&D alignments
+alignments = (
+	("Lawful Good", "Neutral Good", "Chaotic Good"),
+	("Lawful Neutral", "True Neutral", "Chaotic Neutral"),
+	("Lawful Evil", "Neutral Evil", "Chaotic Evil")
+)
+
+races = (
+	"Human",
+	"Elf",
+	"Dwarf"
+)
 
 class Person:
-	def __init__(self, name, location):
+	def __init__(self, name, location, race=None, ability_scores=None, alignment=None):
 		self.name = name
 		self.location = location
+		
+		if race is None:
+			self.race = races[0]
+		
+		if ability_scores is None:
+			self.ability_scores = [10, 10, 10, 10, 10, 10]
+			
+		if alignment is None:
+			self.alignment = alignments[0][2]
 
 def print_roomdata():
 	print(colorama.Style.BRIGHT + world[player.location][0] + ":\n" + colorama.Style.RESET_ALL)
 	print(world[player.location][1])
+
+def print_playerstats():
+	print("Player " + player.name + ":")
+	print("Race:", player.race)
+	print("Alignment:", player.alignment)
 	
 '''
 World format:
@@ -24,8 +52,10 @@ World format:
 '''
 
 world = [
-	("Test Room", "This is a test room.", None, 1, None, 1),
-	(colorama.Fore.GREEN + "Another Test Room", "This is a second test room.", 0, None, 0, None)
+	("Test Room", "This is a test room.", 
+	None, None, None, 1),
+	("Another Test Room", "This is a second test room.", 
+	None, None, 0, None)
 ]
 
 player = Person("Bob", 0)
@@ -39,6 +69,9 @@ while cmd not in quit_cmd:
 	
 	if cmd in look_cmd:
 		print_roomdata()
+		
+	if cmd in char_cmd:
+		print_playerstats()
 		
 	if cmd in east_cmd and world[player.location][5] is not None:
 		player.location = world[player.location][5]
