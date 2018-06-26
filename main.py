@@ -2,6 +2,7 @@ import colorama, random
 
 colorama.init()
 
+# Command alias defenitions
 quit_cmd = ["q", "quit"]
 look_cmd = ["l", "look"]
 east_cmd = ["e", "east"]
@@ -17,6 +18,7 @@ alignments = (
 	("Lawful Evil", "Neutral Evil", "Chaotic Evil")
 )
 
+# List of D&D races
 races = (
 	"Human",
 	"Elf",
