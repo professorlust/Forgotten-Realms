@@ -19,6 +19,7 @@ alignments = (
 	("Lawful Evil", "Neutral Evil", "Chaotic Evil")
 )
 
+# List of D&D classes
 char_classes = (
 	"Barbarian",
 	"Fighter"
@@ -47,6 +48,11 @@ class Character:
 			
 		if alignment is None:
 			self.alignment = alignments[0][2]
+			
+		if self.char_class.name == "Barbarian":
+			self.age = 15 + d4(1)
+		elif self.char_class.name == "Fighter":
+			self.age = 15 + d6(1)
 
 class CharacterClass:
 	def __init__(self, indx, parent):
@@ -69,12 +75,18 @@ def d8(a):
 def d10(a):
 	return dX(a, 10)
 	
+def d12(a):
+	return dX(a, 12)
+
+# DICE DEFS END HERE
+	
 def print_roomdata():
 	print(colorama.Style.BRIGHT + world[player.location][0] + ":\n" + colorama.Style.RESET_ALL)
 	print(world[player.location][1])
 
 def print_playerstats():
-	print("Player " + player.name + ":")
+	print("Player " + player.name + ", Age " + str(player.age) + ":")
+	print("Class:", player.char_class.name)
 	print("Race:", player.race)
 	print("Alignment:", player.alignment)
 	
@@ -96,8 +108,6 @@ player = Character("Bob", 0)
 cmd = ""
 
 print_roomdata()
-
-print(d4(1))
 
 while cmd not in quit_cmd:
 	cmd = input("> ")
