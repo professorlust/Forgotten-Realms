@@ -28,6 +28,7 @@ char_classes = (
 # List of D&D races
 races = (
 	"Human",
+	"Half-Elf",
 	"Elf",
 	"Dwarf"
 )
@@ -38,10 +39,10 @@ class Character:
 		self.location = location
 		
 		if char_class is None:
-			self.char_class = CharacterClass(0, self)
+			self.char_class = CharacterClass(1, self)
 		
 		if ability_scores is None:
-			self.ability_scores = [10, 10, 10, 10, 10, 10]
+			self.ability_scores = [13, 12, 12, 11, 10, 9]
 		
 		if race is None:
 			self.race = races[0]
