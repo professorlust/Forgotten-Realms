@@ -30,9 +30,11 @@ races = (
 	"Human",
 	"Half-Elf",
 	"Elf",
-	"Dwarf"
+	"Dwarf",
+	"Halfling"
 )
 
+# List of D&D size categories
 size_categories = (
 	"Tiny",
 	"Small",
@@ -41,6 +43,7 @@ size_categories = (
 	"Huge"
 )
 
+# Base class for a character, either PC or NPC
 class Character:
 	def __init__(self, name, location, size=None, char_class=None, race=None, ability_scores=None, alignment=None):
 		self.name = name
@@ -67,9 +70,12 @@ class Character:
 			self.size = size_categories[2]
 
 class CharacterClass:
-	def __init__(self, indx, parent):
+	def __init__(self, indx, parent, level=1, exp=0):
 		self.name = char_classes[indx]
 		self.parent = parent
+		
+		self.level = level
+		self.exp = exp
 
 # DICE DEFS BEGIN HERE
 def dX(a, b): return random.randint(1, b) * a
@@ -83,7 +89,6 @@ def d8(a): return dX(a, 8)
 def d10(a): return dX(a, 10)
 	
 def d12(a): return dX(a, 12)
-
 # DICE DEFS END HERE
 	
 def print_roomdata():
@@ -91,7 +96,8 @@ def print_roomdata():
 	print(world[player.location][1])
 
 def print_playerstats():
-	print("Player " + player.name + ", Age " + str(player.age) + ":")
+	print("Player", player.name + ":")
+	print("Age:", str(player.age))
 	print("Size:", player.size)
 	print("Class:", player.char_class.name)
 	print("Race:", player.race)
@@ -105,9 +111,7 @@ Room format:
 
 world = [
 	("Test Room", "This is a test room.", 
-	None, None, None, 1),
-	("Another Test Room", "This is a second test room.", 
-	None, None, 0, None)
+	None, None, None, None),
 ]
 
 player = Character("Bob", 0)
