@@ -1,4 +1,5 @@
-import colorama, random
+import colorama, dice
+import random
 
 # Initialize modules
 random.seed()
@@ -46,29 +47,38 @@ size_categories = (
 
 # Base class for a character, either PC or NPC
 class Character:
-	def __init__(self, name, location, size=None, char_class=None, race=None, ability_scores=None, alignment=None):
+	def __init__(self, name, location, size=None, char_class=None, race=None, ability_scores=None, alignment=None, inventory=None):
 		self.name = name
 		self.location = location
 		
 		if char_class is None:
 			self.char_class = CharacterClass(1, self)
+		else: self.char_class = char_class
 		
 		if ability_scores is None:
 			self.ability_scores = [13, 12, 12, 11, 10, 9]
+		else: self.ability_scores = ability_scores
 		
 		if race is None:
 			self.race = races[0]
+		else: self.race = race
 			
 		if alignment is None:
 			self.alignment = alignments[0][2]
+		else: self.alignment = alignment
 			
 		if self.char_class.name == "Barbarian":
-			self.age = 15 + d4(1)
+			self.age = 15 + int(dice.roll("1d4"))
 		elif self.char_class.name == "Fighter":
-			self.age = 15 + d6(1)
+			self.age = 15 + int(dice.roll("1d6"))
 			
 		if size is None:
 			self.size = size_categories[2]
+		else: self.size = size
+			
+		if inventory is None:
+			self.inventory = []
+		else: self.inventory = inventory
 
 class CharacterClass:
 	def __init__(self, indx, parent, level=1, exp=0):
@@ -77,24 +87,6 @@ class CharacterClass:
 		
 		self.level = level
 		self.exp = exp
-
-# DICE DEFS BEGIN HERE
-def dX(a, b):
-	result = 0
-	for i in range(b):
-		result += random.randint(1, a)
-	return result
-
-def d4(a): return dX(a, 4)
-
-def d6(a): return dX(a, 6)
-
-def d8(a): return dX(a, 8)
-	
-def d10(a): return dX(a, 10)
-	
-def d12(a): return dX(a, 12)
-# DICE DEFS END HERE
 	
 def print_roomdata():
 	print(colorama.Style.BRIGHT + world[player.location][0] + ":\n" + colorama.Style.RESET_ALL)
