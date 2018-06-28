@@ -1,5 +1,6 @@
 import colorama, random
 
+# Initialize modules
 random.seed()
 colorama.init()
 
@@ -78,7 +79,11 @@ class CharacterClass:
 		self.exp = exp
 
 # DICE DEFS BEGIN HERE
-def dX(a, b): return random.randint(1, b) * a
+def dX(a, b):
+	result = 0
+	for i in range(b):
+		result += random.randint(1, a)
+	return result
 
 def d4(a): return dX(a, 4)
 
@@ -96,12 +101,12 @@ def print_roomdata():
 	print(world[player.location][1])
 
 def print_playerstats():
-	print("Player", player.name + ":")
-	print("Age:", str(player.age))
-	print("Size:", player.size)
-	print("Class:", player.char_class.name)
-	print("Race:", player.race)
-	print("Alignment:", player.alignment)
+	print(f"Player {player.name}:")
+	print(f"Age: {player.age}")
+	print(f"Size: {player.size}")
+	print(f"Class: {player.char_class.name}")
+	print(f"Race: {player.race}")
+	print(f"Alignment: {player.alignment}")
 	
 '''
 Room format:
