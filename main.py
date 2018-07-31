@@ -12,6 +12,8 @@ east_cmd = ("e", "east")
 west_cmd = ("w", "west")
 north_cmd = ("n", "north")
 south_cmd = ("s", "south")
+up_cmd = ("u", "up")
+down_cmd = ("d", "down")
 char_cmd = ("c", "char")
 
 # List of D&D alignments
@@ -93,7 +95,7 @@ def print_roomdata():
 	print(world[player.location][1])
 
 def print_playerstats():
-	print(f"Player {player.name}:")
+	print(f"Character {player.name}:")
 	print(f"Age: {player.age}")
 	print(f"Size: {player.size}")
 	print(f"Class: {player.char_class.name}")
@@ -103,12 +105,12 @@ def print_playerstats():
 '''
 Room format:
 (name, description,
- north, south, west, east)
+ north, south, west, east, up, down)
 '''
 
 world = [
 	("Test Room", "This is a test room.", 
-	None, None, None, None),
+	None, None, None, None, None, None),
 ]
 
 player = Character("Bob", 0)
@@ -141,3 +143,15 @@ while cmd not in quit_cmd:
 	if cmd in south_cmd and world[player.location][3] is not None:
 		player.location = world[player.location][3]
 		print_roomdata()
+
+	if cmd in up_cmd and world[player.location][5] is not None:
+		player.location = world[player.location][5]
+		print_roomdata()
+
+	if cmd in down_cmd and world[player.location][6] is not None:
+		player.location = world[player.location][6]
+		print_roomdata()
+	
+	else:
+		if cmd not in quit_cmd:
+			print("Command", cmd, "not found.")
