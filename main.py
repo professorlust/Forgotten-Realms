@@ -38,7 +38,7 @@ races = (
 	"Halfling"
 )
 
-# Base class for a character, either PC or NPC
+# Base class for a character
 class Character:
 	def __init__(self, name, location, char_class=None, race=None, ability_scores=None, alignment=None, inventory=None):
 		self.name = name
@@ -106,7 +106,8 @@ Room format:
  north, south, west, east, up, down)
 '''
 
-oldskullinntaproom_desc = "The tap room of the Old Skull Inn is, for many adventurers like yourself, one of the first images that come to mind when thinking of Shadowdale.\nRight now, there appears to be no one here besides yourself - but that is bound to change sometime soon."
+oldskullinntaproom_desc = "The tap room of the Old Skull Inn is, for many adventurers like yourself, one of the first images that come to mind when thinking of Shadowdale.\
+\nRight now, there appears to be no one here besides yourself - but that is bound to change sometime soon."
 
 # Room definitions
 world = [
@@ -133,6 +134,8 @@ world = [
 ]
 
 player = Character("Bob", 0)
+
+print("Welcome to the Forgotten Realms RPG, with a world currently made of " + str(len(world)) + " rooms.\n")
 
 cmd = ""
 
