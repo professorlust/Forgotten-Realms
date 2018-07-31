@@ -92,7 +92,19 @@ class CharacterClass:
 	
 def print_roomdata():
 	print(colorama.Style.BRIGHT + world[player.location][0] + ":\n" + colorama.Style.RESET_ALL)
-	print(world[player.location][1])
+	print(world[player.location][1] + "\n")
+	if world[player.location][2] is not None:
+		print("There is an exit here, leading " + colorama.Style.BRIGHT + "north." + colorama.Style.RESET_ALL)
+	if world[player.location][3] is not None:
+		print("There is an exit here, leading " + colorama.Style.BRIGHT + "south." + colorama.Style.RESET_ALL)
+	if world[player.location][4] is not None:
+		print("There is an exit here, leading " + colorama.Style.BRIGHT + "west." + colorama.Style.RESET_ALL)
+	if world[player.location][5] is not None:
+		print("There is an exit here, leading " + colorama.Style.BRIGHT + "east." + colorama.Style.RESET_ALL)
+	if world[player.location][6] is not None:
+		print("There is an exit here, leading " + colorama.Style.BRIGHT + "up." + colorama.Style.RESET_ALL)
+	if world[player.location][7] is not None:
+		print("There is an exit here, leading " + colorama.Style.BRIGHT + " down." + colorama.Style.RESET_ALL)
 
 def print_playerstats():
 	print(f"Character {player.name}:")
@@ -108,9 +120,17 @@ Room format:
  north, south, west, east, up, down)
 '''
 
+oldskullinntaproom_desc = "The tap room of the Old Skull Inn is, for many adventurers like yourself, one of the first images that come to mind when thinking of Shadowdale.\nRight now, there appears to be no one here besides yourself - but that is bound to change sometime soon."
+
+# Room defs
 world = [
-	("Test Room", "This is a test room.", 
-	None, None, None, None, None, None),
+	("Old Skull Inn Tap Room", oldskullinntaproom_desc, 
+	None, None, 2, 1, None, None),
+	("Old Skull Inn East Tap Room", oldskullinntaproom_desc,
+	None, None, 0, None, None, None),
+	("Old Skull Inn West Tap Room", oldskullinntaproom_desc,
+	None, None, None, 0, None, None),
+
 ]
 
 player = Character("Bob", 0)
@@ -124,34 +144,26 @@ while cmd not in quit_cmd:
 	
 	if cmd in look_cmd:
 		print_roomdata()
-		
-	if cmd in char_cmd:
+	elif cmd in char_cmd:
 		print_playerstats()
-		
-	if cmd in east_cmd and world[player.location][5] is not None:
+	elif cmd in east_cmd and world[player.location][5] is not None:
 		player.location = world[player.location][5]
 		print_roomdata()
-		
-	if cmd in west_cmd and world[player.location][4] is not None:
+	elif cmd in west_cmd and world[player.location][4] is not None:
 		player.location = world[player.location][4]
 		print_roomdata()
-	
-	if cmd in north_cmd and world[player.location][2] is not None:
+	elif cmd in north_cmd and world[player.location][2] is not None:
 		player.location = world[player.location][2]
 		print_roomdata()
-
-	if cmd in south_cmd and world[player.location][3] is not None:
+	elif cmd in south_cmd and world[player.location][3] is not None:
 		player.location = world[player.location][3]
 		print_roomdata()
-
-	if cmd in up_cmd and world[player.location][5] is not None:
-		player.location = world[player.location][5]
-		print_roomdata()
-
-	if cmd in down_cmd and world[player.location][6] is not None:
+	elif cmd in up_cmd and world[player.location][6] is not None:
 		player.location = world[player.location][6]
 		print_roomdata()
-	
+	elif cmd in down_cmd and world[player.location][7] is not None:
+		player.location = world[player.location][7]
+		print_roomdata()
 	else:
 		if cmd not in quit_cmd:
-			print("Command", cmd, "not found.")
+			print("Command '" + cmd + "' not found.")
