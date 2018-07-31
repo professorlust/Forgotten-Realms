@@ -5,7 +5,7 @@ import random
 random.seed()
 colorama.init()
 
-# Command alias defenitions
+# Command alias definitions
 quit_cmd = ("q", "quit")
 look_cmd = ("l", "look")
 east_cmd = ("e", "east")
@@ -38,18 +38,9 @@ races = (
 	"Halfling"
 )
 
-# List of D&D size categories
-size_categories = (
-	"Tiny",
-	"Small",
-	"Medium",
-	"Large",
-	"Huge"
-)
-
 # Base class for a character, either PC or NPC
 class Character:
-	def __init__(self, name, location, size=None, char_class=None, race=None, ability_scores=None, alignment=None, inventory=None):
+	def __init__(self, name, location, char_class=None, race=None, ability_scores=None, alignment=None, inventory=None):
 		self.name = name
 		self.location = location
 		
@@ -73,11 +64,7 @@ class Character:
 			self.age = 15 + int(dice.roll("1d4"))
 		elif self.char_class.name == "Fighter":
 			self.age = 15 + int(dice.roll("1d6"))
-			
-		if size is None:
-			self.size = size_categories[2]
-		else: self.size = size
-			
+					
 		if inventory is None:
 			self.inventory = []
 		else: self.inventory = inventory
@@ -122,15 +109,22 @@ Room format:
 
 oldskullinntaproom_desc = "The tap room of the Old Skull Inn is, for many adventurers like yourself, one of the first images that come to mind when thinking of Shadowdale.\nRight now, there appears to be no one here besides yourself - but that is bound to change sometime soon."
 
-# Room defs
+# Room definitions
 world = [
 	("Old Skull Inn Tap Room", oldskullinntaproom_desc, 
-	None, None, 2, 1, None, None),
+	None, 3, 2, 1, None, None),
 	("Old Skull Inn East Tap Room", oldskullinntaproom_desc,
 	None, None, 0, None, None, None),
 	("Old Skull Inn West Tap Room", oldskullinntaproom_desc,
 	None, None, None, 0, None, None),
-
+	("In Front of the Old Skull Inn", "",
+	0, 4, None, 6, None, None),
+	("The Northride", "",
+	3, None, None, 5, None, None),
+	("The Northride", "",
+	6, None, 4, None, None, None),
+	("Old Skull Inn Message Post", "",
+	None, 5, None, None, None, None)
 ]
 
 player = Character("Bob", 0)
