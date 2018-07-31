@@ -96,7 +96,6 @@ def print_roomdata():
 def print_playerstats():
 	print(f"Character {player.name}:")
 	print(f"Age: {player.age}")
-	print(f"Size: {player.size}")
 	print(f"Class: {player.char_class.name}")
 	print(f"Race: {player.race}")
 	print(f"Alignment: {player.alignment}")
@@ -118,13 +117,19 @@ world = [
 	("Old Skull Inn West Tap Room", oldskullinntaproom_desc,
 	None, None, None, 0, None, None),
 	("In Front of the Old Skull Inn", "",
-	0, 4, None, 6, None, None),
+	0, 4, 9, 6, None, None),
 	("The Northride", "",
-	3, None, None, 5, None, None),
+	3, 7, 8, 5, None, None),
 	("The Northride", "",
 	6, None, 4, None, None, None),
 	("Old Skull Inn Message Post", "",
-	None, 5, None, None, None, None)
+	None, 5, None, None, None, None),
+	("In Front of Hammerhand's Woodworking", "",
+	4, None, None, None, None, None),
+	("The Northride", "",
+	9, None, None, 4, None, None),
+	("In Front of Miera Lulhannon's House", "",
+	None, 8, None, 3, None, None)
 ]
 
 player = Character("Bob", 0)
