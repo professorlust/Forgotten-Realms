@@ -104,6 +104,7 @@ Room format:
  north, south, west, east, up, down)
 '''
 
+# Descriptions used for multiple rooms
 oldskullinntaproom_desc = "The tap room of the Old Skull Inn is, for many adventurers like yourself, one of the first images that come to mind when thinking of Shadowdale.\
 \nRight now, there appears to be no one here besides yourself - but that is bound to change sometime soon."
 
@@ -131,6 +132,7 @@ world = [
 	None, 8, None, 3, None, None)
 ]
 
+# Initial setup
 player = Character("Bob", 0)
 
 print("Welcome to the Forgotten Realms RPG, with a world currently made of " + str(len(world)) + " rooms.\n")
@@ -139,6 +141,7 @@ cmd = ""
 
 print_roomdata()
 
+# Command interpretation
 while cmd not in quit_cmd:
 	cmd = input("> ")
 	
