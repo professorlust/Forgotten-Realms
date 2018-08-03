@@ -66,6 +66,13 @@ class Character:
 		if inventory is None:
 			self.inventory = []
 		else: self.inventory = inventory
+		
+	def printstats():
+		print(f"Character {self.name}:")
+		print(f"Age: {self.age}")
+		print(f"Class: {self.char_class.name}")
+		print(f"Race: {self.race}")
+		print(f"Alignment: {self.alignment}")
 
 class CharacterClass:
 	def __init__(self, indx, parent, level=1, exp=0):
@@ -90,13 +97,6 @@ def print_roomdata():
 		print("There is an exit here, leading " + colorama.Style.BRIGHT + "up." + colorama.Style.RESET_ALL)
 	if world[player.location][7] is not None:
 		print("There is an exit here, leading " + colorama.Style.BRIGHT + " down." + colorama.Style.RESET_ALL)
-
-def print_playerstats():
-	print(f"Character {player.name}:")
-	print(f"Age: {player.age}")
-	print(f"Class: {player.char_class.name}")
-	print(f"Race: {player.race}")
-	print(f"Alignment: {player.alignment}")
 	
 '''
 Room format:
@@ -135,7 +135,7 @@ world = [
 # Initial setup
 player = Character("Bob", 0)
 
-print("Welcome to the Forgotten Realms RPG, with a world currently made of " + str(len(world)) + " rooms.\n")
+print("Welcome to the Forgotten Realms RPG by Addemup, currently made with a world of " + str(len(world)) + " rooms.\n")
 
 cmd = ""
 
@@ -148,7 +148,7 @@ while cmd not in quit_cmd:
 	if cmd in look_cmd:
 		print_roomdata()
 	elif cmd in char_cmd:
-		print_playerstats()
+		player.printstats()
 	elif cmd in east_cmd and world[player.location][5] is not None:
 		player.location = world[player.location][5]
 		print_roomdata()
