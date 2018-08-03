@@ -97,39 +97,83 @@ def print_roomdata():
 		print("There is an exit here, leading " + colorama.Style.BRIGHT + "up." + colorama.Style.RESET_ALL)
 	if world[player.location][7] is not None:
 		print("There is an exit here, leading " + colorama.Style.BRIGHT + " down." + colorama.Style.RESET_ALL)
-	
-'''
-Room format:
-(name, description,
- north, south, west, east, up, down)
-'''
 
 # Descriptions used for multiple rooms
 oldskullinntaproom_desc = "The tap room of the Old Skull Inn is, for many adventurers like yourself, one of the first images that come to mind when thinking of Shadowdale.\
 \nRight now, there appears to be no one here besides yourself - but that is bound to change sometime soon."
 
+thenorthride_desc = "The Northride passes through Shadowdale and extends all the way to the Moonsea coast."
+
+nearweregrundthetradersshop_desc = ""
+
+nearhammerhandswoodworking_desc = ""
+
+'''
+Room definition format:
+(name, description,
+ north, south, west, east, up, down,
+ objects)
+'''
+
 # Room definitions
 world = [
+	#0
 	("Old Skull Inn Tap Room", oldskullinntaproom_desc, 
-	None, 3, 2, 1, None, None),
+	None, 3, 2, 1, None, None,
+	[]),
+	#1
 	("Old Skull Inn East Tap Room", oldskullinntaproom_desc,
-	None, None, 0, None, None, None),
+	None, None, 0, None, None, None,
+	[]),
+	#2
 	("Old Skull Inn West Tap Room", oldskullinntaproom_desc,
-	None, None, None, 0, None, None),
+	None, None, None, 0, None, None,
+	[]),
+	#3
 	("In Front of the Old Skull Inn", "",
-	0, 4, 9, 6, None, None),
-	("The Northride", "",
-	3, 7, 8, 5, None, None),
-	("The Northride", "",
-	6, None, 4, None, None, None),
+	0, 4, 9, 6, None, None,
+	[]),
+	#4
+	("The Northride", thenorthride_desc,
+	3, 7, 8, 5, None, None,
+	[]),
+	#5
+	("The Northride", thenorthride_desc,
+	6, None, 4, 10, None, None,
+	[]),
+	#6
 	("Old Skull Inn Message Post", "",
-	None, 5, None, None, None, None),
-	("In Front of Hammerhand's Woodworking", "",
-	4, None, None, None, None, None),
-	("The Northride", "",
-	9, None, None, 4, None, None),
+	None, 5, None, None, None, None,
+	[]),
+	#7
+	("In Front of Hammerhand's Woodworking", nearhammerhandswoodworking_desc,
+	4, None, None, None, None, None,
+	[]),
+	#8
+	("The Northride", thenorthride_desc,
+	9, 7, None, 4, None, None,
+	[]),
+	#9
 	("In Front of Miera Lulhannon's House", "",
-	None, 8, None, 3, None, None)
+	None, 8, None, 3, None, None,
+	[]),
+	#10
+	("The Northride", thenorthride_desc,
+	None, 11, 5, None, None, None,
+	[]),
+	#11
+	("North of Weregrund the Trader's Shop", nearweregrundthetradersshop_desc,
+	10, None, 12, None, None, None
+	[]),
+	#12
+	("West of Weregrund the Trader's Shop", nearweregrundthetradersshop_desc,
+	None, None, 13, 11, None, None,
+	[]),
+	#13
+	("East of Hammerhand's Woodworking", nearhammerhandswoodworking_desc,
+	None, None, 7, 13, None, None,
+	[])
+	#14
 ]
 
 # Initial setup
