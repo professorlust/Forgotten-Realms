@@ -9,4 +9,4 @@ Other than the above, I have no clue what I'm going to do with this project - at
 * colorama
 * dice
 
-To install these packages, just type "pip install colorama dice" in your computer's command prompt/terminal.
+To install these packages, just type "pip install colorama dice" in your computer's command prompt/terminal before running the game.
