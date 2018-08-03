@@ -1,8 +1,6 @@
 import colorama, dice
-import random
 
 # Initialize modules
-random.seed()
 colorama.init()
 
 # Command alias definitions
