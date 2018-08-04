@@ -108,6 +108,10 @@ nearweregrundthetradersshop_desc = ""
 
 nearhammerhandswoodworking_desc = ""
 
+shadowdaletrail_desc = ""
+
+nearreedosulcarshouse_desc = ""
+
 '''
 Room definition format:
 (name, description,
@@ -167,13 +171,29 @@ world = [
 	[]),
 	#12
 	("West of Weregrund the Trader's Shop", nearweregrundthetradersshop_desc,
-	None, None, 13, 11, None, None,
+	None, 14, 13, 11, None, None,
 	[]),
 	#13
 	("East of Hammerhand's Woodworking", nearhammerhandswoodworking_desc,
-	None, None, 7, 13, None, None,
-	[])
+	None, None, 7, 12, None, None,
+	[]),
 	#14
+	("South of Weregrund the Trader's Shop", nearweregrundthetradersshop_desc,
+	12, 15, 13, None, None, None,
+	[]),
+	#15
+	("The Shadowdale Trail", shadowdaletrail_desc,
+	14, None, None, 16, None, None,
+	[]),
+	#16
+	("East of Reedo Sulcar's House", nearreedosulcarshouse_desc,
+	17, None, 15, None, None, None,
+	[]),
+	#17
+	("East of Weregrund the Trader's Shop", nearweregrundthetradersshop_desc,
+	None, 16, None, None, None, None,
+	[])
+	#18
 ]
 
 # Initial setup
