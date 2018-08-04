@@ -233,22 +233,38 @@ world = [
 	
 	#20
 	("In Front of Latha Brannon's Boardinghouse", "",
-	18, None, None, 7, None, None,
+	18, None, 22, 7, None, None,
 	[]),
 	
 	#21
 	("The Northride", thenorthride_desc,
-	None, None, None, 18, None, None,
-	[])
+	22, 23, 24, 18, None, None,
+	[]),
 	
 	#22
+	("In Front of a Stone House", "",
+	None, 21, None, 20, None, None,
+	[]),
+	
+	#23
+	("In Front of Hoareb Nimblefingers' House", "",
+	21, None, None, 20, None, None,
+	[]),
+	
+	#24
+	("The Northride", thenorthride_desc,
+	None, None, None, 21, None, None,
+	[])
+	
+	#25
 ]
 
-# Initial setup
 player = Character("Bob", 0)
 
+# Print introduction message
 print("Welcome to the Forgotten Realms RPG by Addemup, currently made with a world of " + str(len(world)) + " rooms.\n")
 
+# Initial setup of the game
 cmd = ""
 
 print_roomdata()
