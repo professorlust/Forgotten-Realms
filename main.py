@@ -36,6 +36,15 @@ races = (
 	"Halfling"
 )
 
+# Experience table used for class progression
+exp_table = (
+	1000,
+	3000,
+	6000,
+	10000,
+	15000
+)
+
 # Base class for a character
 class Character:
 	def __init__(self, name, location, char_class=None, race=None, ability_scores=None, alignment=None, inventory=None):

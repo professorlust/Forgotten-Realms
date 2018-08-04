@@ -63,6 +63,11 @@ instance/
 # Scrapy stuff:
 .scrapy
 
+# Visual Studio stuff:
+.suo
+.pyproj
+.sln
+
 # Sphinx documentation
 docs/_build/
 
@@ -102,7 +107,3 @@ venv.bak/
 
 # mypy
 .mypy_cache/
-
-*.suo
-*.pyproj
-*.sln
