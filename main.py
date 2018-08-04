@@ -218,7 +218,7 @@ world = [
 	
 	#17
 	("East of Weregrund the Trader's Shop", nearweregrundthetradersshop_desc,
-	None, 16, None, None, None, None,
+	25, 16, None, None, None, None,
 	[]),
 	
 	#18
@@ -254,9 +254,14 @@ world = [
 	#24
 	("The Northride", thenorthride_desc,
 	None, None, None, 21, None, None,
-	[])
+	[]),
 	
 	#25
+	("The Northride", thenorthride_desc,
+	None, 17, 5, None, None, None,
+	[])
+	
+	#26
 ]
 
 player = Character("Bob", 0)
