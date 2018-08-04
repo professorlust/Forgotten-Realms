@@ -187,8 +187,8 @@ world = [
 	[]),
 	
 	#11
-	("North of Weregrund the Trader's Shop", nearweregrundthetradersshop_desc,
-	10, None, 12, None, None, None
+	("In Front of Weregrund the Trader's Shop", nearweregrundthetradersshop_desc,
+	10, None, 12, None, None, None,
 	[]),
 	
 	#12
@@ -223,7 +223,7 @@ world = [
 	
 	#18
 	("The Northride", thenorthride_desc,
-	19, 20, None, 8, None, None,
+	19, 20, 21, 8, None, None,
 	[]),
 	
 	#19
@@ -234,7 +234,14 @@ world = [
 	#20
 	("In Front of Latha Brannon's Boardinghouse", "",
 	18, None, None, 7, None, None,
+	[]),
+	
+	#21
+	("The Northride", thenorthride_desc,
+	None, None, None, 18, None, None,
 	[])
+	
+	#22
 ]
 
 # Initial setup
