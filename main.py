@@ -130,79 +130,111 @@ Room definition format:
 
 # Room definitions
 world = [
+
 	#0
 	("Old Skull Inn Tap Room", oldskullinntaproom_desc, 
 	None, 3, 2, 1, None, None,
 	[]),
+	
 	#1
 	("Old Skull Inn East Tap Room", oldskullinntaproom_desc,
 	None, None, 0, None, None, None,
 	[]),
+	
 	#2
 	("Old Skull Inn West Tap Room", oldskullinntaproom_desc,
 	None, None, None, 0, None, None,
 	[]),
+	
 	#3
 	("In Front of the Old Skull Inn", "",
 	0, 4, 9, 6, None, None,
 	[]),
+	
 	#4
 	("The Northride", thenorthride_desc,
 	3, 7, 8, 5, None, None,
 	[]),
+	
 	#5
 	("The Northride", thenorthride_desc,
 	6, None, 4, 10, None, None,
 	[]),
+	
 	#6
 	("Old Skull Inn Message Post", "",
 	None, 5, None, None, None, None,
 	[]),
+	
 	#7
 	("In Front of Hammerhand's Woodworking", nearhammerhandswoodworking_desc,
-	4, None, None, None, None, None,
+	4, None, 20, None, None, None,
 	[]),
+	
 	#8
 	("The Northride", thenorthride_desc,
-	9, 7, None, 4, None, None,
+	9, 7, 18, 4, None, None,
 	[]),
+	
 	#9
 	("In Front of Miera Lulhannon's House", "",
-	None, 8, None, 3, None, None,
+	None, 8, 19, 3, None, None,
 	[]),
+	
 	#10
 	("The Northride", thenorthride_desc,
 	None, 11, 5, None, None, None,
 	[]),
+	
 	#11
 	("North of Weregrund the Trader's Shop", nearweregrundthetradersshop_desc,
 	10, None, 12, None, None, None
 	[]),
+	
 	#12
 	("West of Weregrund the Trader's Shop", nearweregrundthetradersshop_desc,
 	None, 14, 13, 11, None, None,
 	[]),
+	
 	#13
 	("East of Hammerhand's Woodworking", nearhammerhandswoodworking_desc,
 	None, None, 7, 12, None, None,
 	[]),
+	
 	#14
 	("South of Weregrund the Trader's Shop", nearweregrundthetradersshop_desc,
 	12, 15, 13, None, None, None,
 	[]),
+	
 	#15
 	("The Shadowdale Trail", shadowdaletrail_desc,
 	14, None, None, 16, None, None,
 	[]),
+	
 	#16
 	("East of Reedo Sulcar's House", nearreedosulcarshouse_desc,
 	17, None, 15, None, None, None,
 	[]),
+	
 	#17
 	("East of Weregrund the Trader's Shop", nearweregrundthetradersshop_desc,
 	None, 16, None, None, None, None,
-	[])
+	[]),
+	
 	#18
+	("The Northride", thenorthride_desc,
+	19, 20, None, 8, None, None,
+	[]),
+	
+	#19
+	("In Front of Jamble the Eye's House", "",
+	None, 18, None, 9, None, None,
+	[]),
+	
+	#20
+	("In Front of Latha Brannon's Boardinghouse", "",
+	18, None, None, 7, None, None,
+	[])
 ]
 
 # Initial setup
