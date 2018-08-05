@@ -1,7 +1,9 @@
 import colorama, dice
+import random
 
 # Initialize modules
 colorama.init()
+random.seed()
 
 # Command alias definitions
 quit_cmd = ("q", "quit")
@@ -24,6 +26,7 @@ alignments = (
 # List of D&D classes
 char_classes = (
 	"Barbarian",
+	"Rogue",
 	"Fighter"
 )
 
@@ -67,10 +70,12 @@ class Character:
 			self.alignment = alignments[0][2]
 		else: self.alignment = alignment
 			
-		if self.char_class.name == "Barbarian":
+		if self.char_class.name == "Barbarian" or self.char_class.name == "Rogue":
 			self.age = 15 + int(dice.roll("1d4"))
 		elif self.char_class.name == "Fighter":
 			self.age = 15 + int(dice.roll("1d6"))
+		else:
+			self.age = 18
 					
 		if inventory is None:
 			self.inventory = []
